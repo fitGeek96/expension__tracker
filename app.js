@@ -7,30 +7,31 @@ const formEl = document.getElementById('form');
 const textInputEl = document.getElementById('text');
 const amountInputEl = document.getElementById('amount');
 
-const dummyTransactions = [{
-        id: 1,
-        text: 'Flower',
-        amount: -20
-    },
-    {
-        id: 2,
-        text: 'Salary',
-        amount: 300
-    },
-    {
-        id: 3,
-        text: 'Book',
-        amount: -10
-    },
-    {
-        id: 4,
-        text: 'Camera',
-        amount: 150
-    }
-];
+// const dummyTransactions = [{
+//         id: 1,
+//         text: 'Flower',
+//         amount: -20
+//     },
+//     {
+//         id: 2,
+//         text: 'Salary',
+//         amount: 300
+//     },
+//     {
+//         id: 3,
+//         text: 'Book',
+//         amount: -10
+//     },
+//     {
+//         id: 4,
+//         text: 'Camera',
+//         amount: 150
+//     }
+// ];
 
+const localStorageTransactions = JSON.parse(localStorage.getItem('transactions'));
 
-let transactions = dummyTransactions;
+let transactions = localStorage.getItem('transactions') !== null ? localStorageTransactions : [];
 
 // Add transaction
 function addTransaction(e) {
@@ -39,14 +40,19 @@ function addTransaction(e) {
     if (textInputEl.value.trim() === '' || amountInputEl.value.trim() === '') {
         alert('Please add a Text and the Amount ....');
     } else {
+
         const transaction = {
             id: generateID(),
             text: textInputEl.value,
             amount: Number(amountInputEl.value)
         };
-        transactions.push(transaction); 
+
+        transactions.push(transaction);
+
         addTransactionDOM(transaction);
         updateValues();
+        updateLocalStorage();
+
         textInputEl.value = '';
         amountInputEl.value = '';
     }
@@ -99,10 +105,16 @@ function updateValues() {
 }
 
 // Delete a Transaction by iD
-function removeTransaction(id){
+function removeTransaction(id) {
     transactions = transactions.filter(tran => tran.id !== id);
-    
+
+    updateLocalStorage();
     init();
+}
+
+// UPDATE LOCAL STORAGE TRANSACTION
+function updateLocalStorage() {
+    localStorage.setItem('transactions', JSON.stringify(transactions));
 }
 
 // INIT APP 
