@@ -1,0 +1,150 @@
+:root {
+    --box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, .24);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f7f7f7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.container {
+    margin: auto;
+    width: 350px;
+}
+
+h1 {
+    letter-spacing: 1px;
+}
+
+h3 {
+    border-bottom: 1px solid #bbb;
+    padding-bottom: 10px;
+    margin: 20px 0 10px;
+}
+
+h4 {
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.inc__exp__container {
+    background-color: white;
+    box-shadow: var(--box-shadow);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.inc__exp__container>div {
+    flex: 1;
+    text-align: center;
+}
+
+.inc__exp__container>div:first-of-type {
+    border-right: 1px solid #dedede;
+}
+
+.money {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.money.plus {
+    color: #2ecc2e;
+}
+
+.money.minus {
+    color: #fc4531;
+}
+
+label {
+    display: inline-block;
+    margin: 10px 0;
+}
+
+input[type='text'],
+input[type='number'] {
+    border: 1px solid #dedede;
+    border-radius: 2px;
+    display: block;
+    padding: .4rem;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.btn {
+    position: relative;
+    background-color: #9c88ff;
+    box-shadow: var(--box-shadow);
+    padding: .5rem 1rem;
+    letter-spacing: 1px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    border: none;
+    margin: 1rem auto;
+    align-items: center;
+    width: 50%;
+    cursor: pointer;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.list li {
+    position: relative;
+    background-color: #fff;
+    box-shadow: var(--box-shadow);
+    padding: .5rem;
+    margin: .5rem;
+    display: flex;
+    justify-content: space-between;
+    color: #333;
+}
+
+.list li.minus {
+    border-right: 5px solid;
+    color: #fc4531;
+}
+
+.list li.plus {
+    border-right: 5px solid;
+    color: #2ecc2e;
+}
+
+.delete__btn {
+    background-color: #97180a;
+    border: none;
+    color: #fff;
+    border-radius: 3px;
+    text-transform: uppercase;
+    position: absolute;
+    left: -20px;
+    top: 0;
+    height: 100%;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity .3s ease;
+    outline: 0;
+}
+
+  .list li:hover .delete__btn {
+    opacity: 1;
+}
